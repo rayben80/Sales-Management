@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>중고차 시장 공략 인터랙티브 영업 전략</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #f8fafc; /* slate-50 */
+        }
+        .nav-link {
+            transition: color 0.3s, border-bottom-color 0.3s;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: #2563eb; /* blue-600 */
+            border-bottom-color: #2563eb;
+        }
+        .target-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .target-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        .modal {
+            display: none;
+            transition: opacity 0.3s ease;
+        }
+        .modal-content {
+            transition: transform 0.3s ease;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Header & Navigation -->
+    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-40 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl md:text-2xl font-bold text-blue-600">이폼사인 중고차 시장 공략 전략</h1>
+            <div class="hidden md:flex space-x-8">
+                <a href="#summary" class="nav-link font-medium border-b-2 border-transparent pb-1">전략 개요</a>
+                <a href="#goals" class="nav-link font-medium border-b-2 border-transparent pb-1">핵심 목표</a>
+                <a href="#targets" class="nav-link font-medium border-b-2 border-transparent pb-1">타겟 기업</a>
+                <a href="#timeline" class="nav-link font-medium border-b-2 border-transparent pb-1">실행 계획</a>
+                <a href="#risks" class="nav-link font-medium border-b-2 border-transparent pb-1">리스크 관리</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+            <a href="#summary" class="block py-2 nav-link">전략 개요</a>
+            <a href="#goals" class="block py-2 nav-link">핵심 목표</a>
+            <a href="#targets" class="block py-2 nav-link">타겟 기업</a>
+            <a href="#timeline" class="block py-2 nav-link">실행 계획</a>
+            <a href="#risks" class="block py-2 nav-link">리스크 관리</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12">
+
+        <!-- 0. Executive Summary -->
+        <section id="summary" class="mb-24 scroll-mt-24">
+            <h2 class="text-3xl font-bold text-center mb-4">전략 개요</h2>
+            <p class="max-w-3xl mx-auto text-center text-gray-600 mb-12">중고차 시장의 디지털 전환이라는 거대한 파도 속에서, 이폼사인이 어떻게 시장의 핵심 인프라로 자리매김할 것인지에 대한 전략적 방향과 기회를 제시합니다.</p>
+            
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-4 text-blue-600">시장 기회 및 목적</h3>
+                    <p class="mb-4">연간 390만 대의 거래, 조 단위의 투자가 유입되는 중고차 시장은 '디지털 전환'의 변혁기입니다. 하지만 '계약' 단계의 신뢰와 비효율 문제는 여전한 아킬레스건입니다.</p>
+                    <p class="font-semibold">본 영업의 목적은, 이폼사인을 중고차 시장의 디지털 전환을 완성하는 <span class="text-blue-600">핵심 인프라(Key Infrastructure)</span>로 포지셔닝하는 것입니다.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-4 text-blue-600">핵심 전략 방향</h3>
+                    <p class="mb-4">우리의 핵심 전략은 <span class="font-bold">'성과 기반의 시장 선점 전략'</span>입니다. 혁신을 주도하는 기업과의 빠른 성공 사례(PoC, 계약)를 확보하여 시장 표준을 선점합니다.</p>
+                    <p class="font-semibold">초기 성공을 지렛대 삼아 시장 전체로 영향력을 확산시키는 <span class="text-blue-600">'도미노 효과'</span> 창출이 이 전략의 핵심입니다.</p>
+                </div>
+            </div>
+            <div class="mt-12 bg-white p-6 rounded-xl shadow-lg">
+                <h3 class="text-xl font-bold text-center mb-4">중고차 시장 규모 (연간 약 390만 대)</h3>
+                <div class="chart-container relative h-80 w-full max-w-2xl mx-auto">
+                    <canvas id="marketChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- 1. Final Goals -->
+        <section id="goals" class="mb-24 scroll-mt-24">
+            <h2 class="text-3xl font-bold text-center mb-12">최종 목표 (3개월)</h2>
+            <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-8 rounded-r-lg shadow-md">
+                    <h3 class="text-2xl font-bold mb-2">핵심 목표</h3>
+                    <p class="text-lg text-gray-700">PoC(기술 검증) <span class="text-blue-600 font-bold text-2xl">2건</span> 이상 확보 또는</p>
+                    <p class="text-lg text-gray-700">정식 계약 <span class="text-blue-600 font-bold text-2xl">1건</span> 체결</p>
+                </div>
+                <div class="bg-gray-50 border-l-4 border-gray-500 p-8 rounded-r-lg shadow-md">
+                    <h3 class="text-2xl font-bold mb-2">접촉 목표</h3>
+                    <p class="text-lg text-gray-700">1순위 타겟 그룹</p>
+                    <p class="text-lg text-gray-700"><span class="text-gray-800 font-bold text-2xl">10개사</span> 이상 제안 및 실무 미팅 완료</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Target List -->
+        <section id="targets" class="mb-24 scroll-mt-24">
+            <h2 class="text-3xl font-bold text-center mb-4">확장된 최종 타겟 리스트</h2>
+            <p class="max-w-3xl mx-auto text-center text-gray-600 mb-8">시장의 혁신을 주도하는 기업과 장기적 관점에서 반드시 확보해야 할 핵심 플레이어를 구분하여 공략합니다.</p>
+            <div class="flex justify-center space-x-4 mb-8">
+                <button id="priority-1-btn" class="px-6 py-2 font-semibold rounded-full bg-blue-600 text-white shadow-md">⚡️ 1순위: 최우선 공략 (10개사)</button>
+                <button id="priority-2-btn" class="px-6 py-2 font-semibold rounded-full bg-white text-gray-700 border border-gray-300">⏳ 2순위: 차선 공략 (5개사)</button>
+            </div>
+            <div id="targets-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Target cards will be injected here by JavaScript -->
+            </div>
+        </section>
+
+        <!-- 4. Timeline -->
+        <section id="timeline" class="mb-24 scroll-mt-24">
+            <h2 class="text-3xl font-bold text-center mb-12">공격적 실행 계획 (Timeline)</h2>
+            <div class="relative max-w-2xl mx-auto">
+                <div class="border-l-2 border-blue-200 absolute h-full top-0 left-4"></div>
+                <!-- Phase 1 -->
+                <div class="mb-8 flex items-center w-full">
+                    <div class="z-10 bg-blue-600 rounded-full h-8 w-8 flex items-center justify-center text-white font-bold">1</div>
+                    <div class="ml-6 bg-white p-6 rounded-lg shadow-lg w-full">
+                        <h3 class="font-bold text-lg text-blue-700">1단계: 제안 집중 기간 <span class="text-sm font-normal text-gray-500">(~8/15)</span></h3>
+                        <ul class="mt-2 list-disc list-inside text-gray-600">
+                            <li>1순위 타겟 전체(10개사)에 개인화된 제안서 발송</li>
+                            <li>전화 Follow-up으로 초기 미팅 일정 신속 확보</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Phase 2 -->
+                <div class="mb-8 flex items-center w-full">
+                    <div class="z-10 bg-blue-600 rounded-full h-8 w-8 flex items-center justify-center text-white font-bold">2</div>
+                    <div class="ml-6 bg-white p-6 rounded-lg shadow-lg w-full">
+                        <h3 class="font-bold text-lg text-blue-700">2단계: 리드 선별 기간 <span class="text-sm font-normal text-gray-500">(~9/26)</span></h3>
+                        <ul class="mt-2 list-disc list-inside text-gray-600">
+                            <li>확보된 미팅에서 맞춤형 데모 시연</li>
+                            <li>도입 의지, 예산 등을 기준으로 '핵심 리드' 3~5곳 선별</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Phase 3 -->
+                <div class="flex items-center w-full">
+                    <div class="z-10 bg-blue-600 rounded-full h-8 w-8 flex items-center justify-center text-white font-bold">3</div>
+                    <div class="ml-6 bg-white p-6 rounded-lg shadow-lg w-full">
+                        <h3 class="font-bold text-lg text-blue-700">3단계: 클로징 집중 기간 <span class="text-sm font-normal text-gray-500">(~10/31)</span></h3>
+                        <ul class="mt-2 list-disc list-inside text-gray-600">
+                            <li>'핵심 리드' 대상 PoC 또는 계약 체결에 역량 집중</li>
+                            <li>기술팀 협업 및 견적, 계약 조건 협상</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Risk Management -->
+        <section id="risks" class="scroll-mt-24">
+            <h2 class="text-3xl font-bold text-center mb-12">리스크 및 대응 방안</h2>
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm text-left">
+                        <thead class="bg-gray-100 text-gray-600 uppercase">
+                            <tr>
+                                <th scope="col" class="px-6 py-3">예상 리스크</th>
+                                <th scope="col" class="px-6 py-3">발생 가능성</th>
+                                <th scope="col" class="px-6 py-3">영향도</th>
+                                <th scope="col" class="px-6 py-3">대응 방안</th>
+                            </tr>
+                        </thead>
+                        <tbody id="risk-table-body" class="divide-y">
+                           <!-- Risk rows will be injected here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal -->
+    <div id="target-modal" class="modal fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50">
+        <div class="modal-content bg-white rounded-lg shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto p-8 relative" style="transform: scale(0.95);">
+            <button id="modal-close-btn" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-3xl">&times;</button>
+            <div id="modal-body">
+                <!-- Modal content will be injected here -->
+            </div>
+        </div>
+    </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    // Data
+    const targetsData = {
+        priority1: [
+            { name: '헤이딜러', point: '플랫폼 경쟁력 강화', msg: "'헤이딜러 인증'의 신뢰도를 완성하십시오.", db: "• 재무/실적: 매출 898.5억 원 ('23년), 누적 투자 1,210억 원<br>• 운영사: (주)피알앤디<br>• 핵심 담당자 (추정): 박진우 대표, 최고제품책임자(CPO)<br>• 최신 동향: 신뢰도 관련 서비스 지속 출시하며 온라인 플랫폼 중 압도적인 성장세 기록." },
+            { name: '차봇모빌리티', point: '복잡한 계약 관리 해결', msg: "고객 약관부터 파트너 제휴까지, 모든 계약을 한번에 해결해 드립니다.", db: "• 재무/실적: 누적 투자 226억 원<br>• 핵심 담당자 (추정): 강성근 대표, 사업/제휴 담당 부서<br>• 최신 동향: 운전자 생애주기 맞춤형 서비스 확장, B2B 파트너십 강화." },
+            { name: 'KB차차차', point: '금융 연계 강화', msg: "자동차 대출 심사부터 실행까지, 원스톱 처리하여 고객 이탈을 막으십시오.", db: "• 운영사: KB캐피탈<br>• 핵심 담당자 (추정): 디지털전략팀, 자동차금융팀<br>• 최신 동향: KB금융그룹 내 연계 서비스 및 비대면 대출 프로세스 고도화에 집중." },
+            { name: '첫차', point: '모바일 경험 최적화', msg: "MZ세대는 기다리지 않습니다. '첫차' 앱 안에서 계약까지 한번에 끝내는 경험을 제공하세요.", db: "• 운영사: (주)미스터픽<br>• 핵심 담당자 (추정): 최철훈, 송상훈 공동대표, 플랫폼 기획팀<br>• 최신 동향: 젊은 층 대상의 직관적인 UI/UX 및 비대면 서비스 강화." },
+            { name: '카머스', point: '해외 바이어 계약 편의성', msg: "해외 바이어도 클릭 한 번으로 서명 완료! 수출 계약의 속도를 높여보세요.", db: "• 재무/실적: 시리즈A 100억 원 투자 유치<br>• 핵심 담당자 (추정): 안인성 대표, 해외영업팀<br>• 최신 동향: 투자 유치 후 수출 국가 및 물량 확대에 집중." },
+            { name: '아이트럭', point: 'B2B 거래 효율 극대화', msg: "법인 고객의 복잡한 상용차 계약, 전자서명으로 5분 안에 끝내십시오.", db: "• 재무/실적: 누적 투자 110억 원<br>• 핵심 담당자 (추정): 정혜인 대표, B2B 영업팀<br>• 최신 동향: 상용차 관련 금융 및 부가 서비스 연계 강화." },
+            { name: '오토플러스', point: '인증 중고차 신뢰도', msg: "'리본카'의 품질, 위변조 불가능한 전자 보증서로 고객에게 증명하십시오.", db: "• 재무/실적: 매출 3,517억 원 / 판매 12,407대 ('24년)<br>• 핵심 담당자 (추정): 플랫폼사업본부, 마케팅팀<br>• 최신 동향: 비대면 서비스 '리본카'의 품질 인증 및 보증 프로그램 강화." },
+            { name: '오토핸즈', point: '온라인 경매 시스템 고도화', msg: "경매 낙찰부터 대금 정산까지, 모든 과정을 자동화하여 분쟁을 없애고 효율을 높이세요.", db: "• 재무/실적: 매출 1,336억 원 / 판매 6,370대 ('24년)<br>• 핵심 담당자 (추정): 온라인경매 사업부, IT 시스템 담당<br>• 최신 동향: B2B 온라인 경매 물량 확대 및 시스템 안정성 확보." },
+            { name: 'AJ셀카', point: 'B2B 경매 효율화', msg: "수많은 회원사와의 경매 약정 및 차량 거래 계약, 전자화로 비용과 시간을 절감할 수 있습니다.", db: "• 핵심 담당자 (추정): 온라인플랫폼사업팀<br>• 최신 동향: '내차팔기' 서비스 등 온라인 비대면 채널 강화." },
+            { name: '당근', point: '개인 간 거래 신뢰 확보', msg: "중고차 직거래 사기, 표준 전자계약서 제공으로 예방하고 '당근'의 신뢰도를 높일 수 있습니다.", db: "• 재무/실적: 추정 거래 7.6만 대 ('24년)<br>• 핵심 담당자 (추정): 중고차 서비스팀, 신사업/광고팀<br>• 최신 동향: 중고차, 부동산 등 고가 품목의 거래 신뢰도 향상 방안 모색." }
+        ],
+        priority2: [
+            { name: 'K Car', point: '특정 업무(비대면) 개선', msg: "'내차사기 홈서비스'의 비대면 계약, 고객이 더 편하게 만들 수 있습니다.", db: "• 재무/실적: 매출 2조 3천억 원 / 판매 72,709대 ('24년)<br>• 핵심 담당자 (추정): 디지털플랫폼팀, 비대면사업부<br>• 최신 동향: 온라인과 오프라인을 잇는 O2O 서비스 고도화." },
+            { name: '엔카', point: '딜러 회원 및 데이터 관리', msg: "수만 명의 딜러 회원 계약과 데이터 제공 계약, 전자서명으로 효율적이고 안전하게 관리하십시오.", db: "• 재무/실적: 매출 869억 원 ('23년)<br>• 핵심 담당자 (추정): 비즈니스 제휴팀, 데이터 사업팀<br>• 최신 동향: AI 기반 시세 예측, 데이터 상품 판매 등 플랫폼의 데이터 사업 강화." },
+            { name: '현대/기아', point: '브랜드 신뢰도 강화', msg: "인증 중고차의 '신뢰', 위변조 불가능한 전자 보증서로 증명하십시오.", db: "• 재무/실적: 현대 3,677대, 기아 7,508대 판매 ('24년)<br>• 핵심 담당자 (추정): 국내인증중고차사업팀<br>• 최신 동향: 인증 중고차 매물 확대 및 브랜드 신뢰도 제고 활동에 집중." },
+            { name: '롯데렌터카', point: '렌터카 및 경매 연계', msg: "장기렌터카 계약부터 중고차 경매까지, 그룹 내 모든 자동차 계약 프로세스를 통합 관리하세요.", db: "• 재무/실적: 어피니티로부터 1조 5,729억 원 투자 유치 ('25년)<br>• 핵심 담당자 (추정): 디지털혁신팀, 중고차사업팀<br>• 최신 동향: 렌탈 사업과 중고차 판매(경매) 사업 간의 시너지 창출." },
+            { name: 'SK렌터카', point: '인증 중고차 및 렌탈', msg: "'SK렌카 인증 중고차'의 계약 과정, 전자화로 고객 만족도를 한 단계 높일 수 있습니다.", db: "• 재무/실적: 어피니티로부터 8,200억 원 투자 유치 ('25년)<br>• 핵심 담당자 (추정): 인증중고차사업팀, 디지털전략팀<br>• 최신 동향: 온라인 채널을 통한 다이렉트 렌탈 및 중고차 판매 강화." }
+        ]
+    };
+
+    const risksData = [
+        { risk: '핵심 담당자 접촉 실패', likelihood: '높음', impact: '높음', mitigation: "• **대응 1 (대안 경로):** 대표 번호/이메일을 통해 정식으로 사업개발팀 연결 요청.<br>• **대응 2 (우회 경로):** 링크드인 등 소셜 미디어를 통해 해당 팀의 다른 팀원에게 접촉하여 정보 획득.<br>• **대응 3 (장기):** 관련 산업 컨퍼런스, 세미나에 참석하여 네트워킹 기회 확보." },
+        { risk: '경쟁사 선점 또는 대응', likelihood: '중간', impact: '높음', mitigation: "• **대응 1 (차별화):** 가격 경쟁을 지양하고, '정부 혁신제품 지정', 'CSAP 인증' 등 독보적인 보안성과 신뢰성을 강조.<br>• **대응 2 (신속성):** 빠른 의사결정과 기술 지원을 통해 경쟁사보다 먼저 PoC를 진행하여 고객 경험 선점." },
+        { risk: '고객사의 내부 이슈', likelihood: '높음', impact: '중간', mitigation: "• **대응 1 (부담 완화):** 초기 도입 비용이 부담 없는 PoC 모델을 적극 제안.<br>• **대응 2 (가치 제안):** 단순 비용 절감 효과가 아닌, '신뢰도 향상', '고객 경험 개선' 등 비즈니스 성장에 기여하는 핵심 가치를 중심으로 설득." },
+        { risk: '기술적 장벽', likelihood: '중간', impact: '높음', mitigation: "• **대응 1 (사전 준비):** 영업 단계에서 기술지원팀과 긴밀히 협력하여, 예상되는 기술적 문제에 대한 해결 방안을 미리 준비.<br>• **대응 2 (전문성 부각):** 다양한 산업군의 성공적인 API 연동 사례를 제시하여 기술적 우려 해소." }
+    ];
+
+    // Mobile Menu Toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    // Navigation
+    document.querySelectorAll('.nav-link').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            if(this.getAttribute('href').startsWith('#')) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                if (mobileMenu.classList.contains('hidden') === false) {
+                    mobileMenu.classList.add('hidden');
+                }
+            }
+        });
+    });
+    
+    // Active Nav Link on Scroll
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            if (pageYOffset >= sectionTop - 120) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active', 'text-blue-600', 'border-blue-600');
+            link.classList.add('text-gray-600', 'border-transparent');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('active', 'text-blue-600', 'border-blue-600');
+                link.classList.remove('text-gray-600', 'border-transparent');
+            }
+        });
+    });
+
+
+    // Market Chart
+    const ctx = document.getElementById('marketChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['전체 거래량', '사업자 거래(B2B)', '당사자 거래(P2P)'],
+            datasets: [{
+                label: '연간 거래량 (대)',
+                data: [3899581, 2541322, 1358259],
+                backgroundColor: [
+                    'rgba(59, 130, 246, 0.7)', // blue-500
+                    'rgba(37, 99, 235, 0.7)',  // blue-600
+                    'rgba(147, 197, 253, 0.7)' // blue-300
+                ],
+                borderColor: [
+                    'rgba(59, 130, 246, 1)',
+                    'rgba(37, 99, 235, 1)',
+                    'rgba(147, 197, 253, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.dataset.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            if (context.parsed.y !== null) {
+                                label += new Intl.NumberFormat('ko-KR').format(context.parsed.y) + ' 대';
+                            }
+                            return label;
+                        }
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        callback: function(value, index, values) {
+                            return new Intl.NumberFormat('ko-KR', { notation: 'compact' }).format(value);
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    // Targets Grid & Modal
+    const targetsGrid = document.getElementById('targets-grid');
+    const modal = document.getElementById('target-modal');
+    const modalBody = document.getElementById('modal-body');
+    const modalCloseBtn = document.getElementById('modal-close-btn');
+    const priority1Btn = document.getElementById('priority-1-btn');
+    const priority2Btn = document.getElementById('priority-2-btn');
+
+    function createTargetCard(target) {
+        const card = document.createElement('div');
+        card.className = 'target-card bg-white rounded-lg shadow-md p-6 cursor-pointer flex flex-col justify-between';
+        card.innerHTML = `
+            <div>
+                <h4 class="font-bold text-lg mb-2">${target.name}</h4>
+                <p class="text-sm text-gray-500">${target.point}</p>
+            </div>
+            <p class="text-blue-600 text-sm font-semibold mt-4">자세히 보기 &rarr;</p>
+        `;
+        card.addEventListener('click', () => openModal(target));
+        return card;
+    }
+
+    function renderTargets(priority) {
+        targetsGrid.innerHTML = '';
+        targetsData[priority].forEach(target => {
+            targetsGrid.appendChild(createTargetCard(target));
+        });
+    }
+
+    function openModal(target) {
+        modalBody.innerHTML = `
+            <h3 class="text-2xl font-bold mb-4">${target.name}</h3>
+            <div class="mb-6">
+                <p class="font-semibold text-gray-500 text-sm uppercase tracking-wider">핵심 포인트</p>
+                <p class="text-lg">${target.point}</p>
+            </div>
+            <div class="mb-6">
+                <p class="font-semibold text-gray-500 text-sm uppercase tracking-wider">제안 메시지</p>
+                <p class="text-lg italic text-blue-700 bg-blue-50 p-4 rounded-md">"${target.msg}"</p>
+            </div>
+            <div>
+                <p class="font-semibold text-gray-500 text-sm uppercase tracking-wider">영업 정보 (DB)</p>
+                <div class="text-gray-700 bg-gray-50 p-4 rounded-md mt-2">${target.db}</div>
+            </div>
+        `;
+        modal.style.display = 'flex';
+        setTimeout(() => {
+            modal.style.opacity = 1;
+            modal.querySelector('.modal-content').style.transform = 'scale(1)';
+        }, 10);
+    }
+
+    function closeModal() {
+        modal.style.opacity = 0;
+        modal.querySelector('.modal-content').style.transform = 'scale(0.95)';
+        setTimeout(() => {
+            modal.style.display = 'none';
+        }, 300);
+    }
+
+    modalCloseBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+
+    priority1Btn.addEventListener('click', () => {
+        renderTargets('priority1');
+        priority1Btn.classList.add('bg-blue-600', 'text-white');
+        priority1Btn.classList.remove('bg-white', 'text-gray-700', 'border', 'border-gray-300');
+        priority2Btn.classList.add('bg-white', 'text-gray-700', 'border', 'border-gray-300');
+        priority2Btn.classList.remove('bg-blue-600', 'text-white');
+    });
+
+    priority2Btn.addEventListener('click', () => {
+        renderTargets('priority2');
+        priority2Btn.classList.add('bg-blue-600', 'text-white');
+        priority2Btn.classList.remove('bg-white', 'text-gray-700', 'border', 'border-gray-300');
+        priority1Btn.classList.add('bg-white', 'text-gray-700', 'border', 'border-gray-300');
+        priority1Btn.classList.remove('bg-blue-600', 'text-white');
+    });
+
+    // Risk Table
+    const riskTableBody = document.getElementById('risk-table-body');
+    risksData.forEach((risk, index) => {
+        const row = document.createElement('tr');
+        row.className = index % 2 === 0 ? 'bg-white' : 'bg-gray-50';
+        row.innerHTML = `
+            <td class="px-6 py-4 font-medium text-gray-900">${risk.risk}</td>
+            <td class="px-6 py-4">
+                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${risk.likelihood === '높음' ? 'bg-red-100 text-red-800' : 'bg-yellow-100 text-yellow-800'}">${risk.likelihood}</span>
+            </td>
+            <td class="px-6 py-4">
+                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${risk.impact === '높음' ? 'bg-red-100 text-red-800' : 'bg-yellow-100 text-yellow-800'}">${risk.impact}</span>
+            </td>
+            <td class="px-6 py-4 text-gray-600">${risk.mitigation}</td>
+        `;
+        riskTableBody.appendChild(row);
+    });
+
+    // Initial render
+    renderTargets('priority1');
+});
+</script>
+
+</body>
+</html>
