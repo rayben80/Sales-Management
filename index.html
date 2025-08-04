@@ -6,6 +6,7 @@
     <title>중고차 시장 공략 인터랙티브 영업 전략</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -20,8 +21,7 @@
             border-bottom-color: #2563eb;
         }
         .target-card {
-            transition: transform 0.3s, box-shadow 0.3s, border-top-color 0.3s;
-            border-top: 4px solid transparent;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
         .target-card:hover {
             transform: translateY(-5px);
@@ -33,16 +33,6 @@
         }
         .modal-content {
             transition: transform 0.3s ease;
-        }
-        .status-select {
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
-            background-position: right 0.5rem center;
-            background-repeat: no-repeat;
-            background-size: 1.5em 1.5em;
-            padding-right: 2.5rem;
         }
     </style>
 </head>
@@ -75,10 +65,9 @@
     <!-- Main Content -->
     <main class="container mx-auto px-6 py-12">
 
-        <!-- 0. Executive Summary -->
         <section id="summary" class="mb-24 scroll-mt-24">
             <h2 class="text-3xl font-bold text-center mb-4">전략 개요</h2>
-            <p class="max-w-3xl mx-auto text-center text-gray-600 mb-12">중고차 시장의 디지털 전환이라는 거대한 파도 속에서, 이폼사인이 어떻게 시장의 핵심 인프라로 자리매김할 것인지에 대한 전략적 방향과 기회를 제시합니다.</p>
+            <p class="max-w-3xl mx-auto text-center text-gray-600 mb-12">중고차 시장의 디지털 전환이라는 거대한 파도 속에서,<br>이폼사인이 어떻게 시장의 핵심 인프라로 자리매김할 것인지에 대한 전략적 방향과 기회를 제시합니다.</p>
             
             <div class="grid md:grid-cols-2 gap-8 items-center">
                 <div class="bg-white p-8 rounded-xl shadow-lg">
@@ -100,7 +89,7 @@
                     </div>
                 </div>
                 <div class="bg-white p-6 rounded-xl shadow-lg">
-                    <h3 class="text-xl font-bold text-center mb-4">타겟 기업 전자문서 도입 현황</h3>
+                    <h3 class="text-xl font-bold text-center mb-4">타겟 기업 전자문서 도입 현황 <span id="adoption-total-count" class="text-gray-500 text-lg font-medium"></span></h3>
                     <div class="chart-container relative h-80 w-full max-w-lg mx-auto">
                         <canvas id="adoptionChart"></canvas>
                     </div>
@@ -108,24 +97,22 @@
             </div>
         </section>
 
-        <!-- 1. Final Goals -->
         <section id="goals" class="mb-24 scroll-mt-24">
             <h2 class="text-3xl font-bold text-center mb-12">최종 목표 (3개월)</h2>
             <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
                 <div class="bg-blue-50 border-l-4 border-blue-500 p-8 rounded-r-lg shadow-md">
-                    <h3 class="text-2xl font-bold mb-2">핵심 목표</h3>
-                    <p class="text-lg text-gray-700">PoC(기술 검증) <span class="text-blue-600 font-bold text-2xl">2건</span> 이상 확보 또는</p>
-                    <p class="text-lg text-gray-700">정식 계약 <span class="text-blue-600 font-bold text-2xl">1건</span> 체결</p>
+                    <h3 class="text-2xl font-bold mb-2">1순위 그룹 목표 (단기 성과)</h3>
+                    <p class="text-lg text-gray-700">빠른 성공 사례 확보를 위해</p>
+                    <p class="text-lg text-gray-700"><span class="text-blue-600 font-bold text-2xl">정식 계약 1건</span> 이상 체결</p>
                 </div>
                 <div class="bg-gray-50 border-l-4 border-gray-500 p-8 rounded-r-lg shadow-md">
-                    <h3 class="text-2xl font-bold mb-2">접촉 목표</h3>
-                    <p class="text-lg text-gray-700">1순위 타겟 그룹</p>
-                    <p class="text-lg text-gray-700"><span class="text-gray-800 font-bold text-2xl">10개사</span> 이상 제안 및 실무 미팅 완료</p>
+                    <h3 class="text-2xl font-bold mb-2">2순위 그룹 목표 (장기 포석)</h3>
+                    <p class="text-lg text-gray-700">미래 가치 확보를 위해</p>
+                    <p class="text-lg text-gray-700"><span class="text-gray-800 font-bold text-2xl">PoC 또는 계약 1건</span> 이상 확보</p>
                 </div>
             </div>
         </section>
         
-        <!-- 4. Timeline -->
         <section id="timeline" class="mb-24 scroll-mt-24">
             <h2 class="text-3xl font-bold text-center mb-12">공격적 실행 계획 (Timeline)</h2>
             <div class="relative max-w-2xl mx-auto">
@@ -135,7 +122,7 @@
                     <div class="ml-6 bg-white p-6 rounded-lg shadow-lg w-full">
                         <h3 class="font-bold text-lg text-blue-700">1단계: 제안 집중 기간 <span class="text-sm font-normal text-gray-500">(~8/15)</span></h3>
                         <ul class="mt-2 list-disc list-inside text-gray-600">
-                            <li>1순위 타겟 전체에 개인화된 제안서 발송</li>
+                            <li>1순위 타겟 전체에 맞춤형 제안서 발송</li>
                             <li>전화 Follow-up으로 초기 미팅 일정 신속 확보</li>
                         </ul>
                     </div>
@@ -156,16 +143,15 @@
                         <h3 class="font-bold text-lg text-blue-700">3단계: 클로징 집중 기간 <span class="text-sm font-normal text-gray-500">(~10/31)</span></h3>
                         <ul class="mt-2 list-disc list-inside text-gray-600">
                             <li>'핵심 리드' 대상 PoC 또는 계약 체결에 역량 집중</li>
-                            <li>기술팀 협업 및 견적, 계약 조건 협상</li>
+                            <li>고객서비스팀 협업 및 견적, 계약 조건 협상</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 3. Target List -->
         <section id="targets" class="mb-24 scroll-mt-24">
-            <h2 class="text-3xl font-bold text-center mb-4">확장된 최종 타겟 리스트</h2>
+            <h2 class="text-3xl font-bold text-center mb-4">타겟 리스트</h2>
             <p class="max-w-3xl mx-auto text-center text-gray-600 mb-8">시장의 혁신을 주도하는 기업과 장기적 관점에서 반드시 확보해야 할 핵심 플레이어를 구분하여 공략합니다.</p>
             
              <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-4 mb-8 text-sm">
@@ -179,20 +165,14 @@
                 </div>
             </div>
 
-            <div class="max-w-4xl mx-auto mb-8">
-                <input type="text" id="search-input" placeholder="기업명으로 검색..." class="w-full px-4 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500">
-            </div>
-
             <div class="flex justify-center space-x-4 mb-8">
                 <button id="priority-1-btn" class="px-6 py-2 font-semibold rounded-full bg-blue-600 text-white shadow-md">1순위 그룹 보기 (13개사)</button>
                 <button id="priority-2-btn" class="px-6 py-2 font-semibold rounded-full bg-white text-gray-700 border border-gray-300">2순위 그룹 보기 (10개사)</button>
             </div>
             <div id="targets-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                <!-- Target cards will be injected here by JavaScript -->
             </div>
         </section>
 
-        <!-- 5. Risk Management -->
         <section id="risks" class="scroll-mt-24">
             <h2 class="text-3xl font-bold text-center mb-12">리스크 및 대응 방안</h2>
             <div class="bg-white rounded-xl shadow-lg overflow-hidden">
@@ -214,7 +194,6 @@
         </section>
     </main>
 
-    <!-- Modal -->
     <div id="target-modal" class="modal fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50">
         <div class="modal-content bg-white rounded-lg shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto p-8 relative" style="transform: scale(0.95);">
             <button id="modal-close-btn" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-3xl">&times;</button>
@@ -225,33 +204,35 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
+    Chart.register(ChartDataLabels);
+
     const targetsData = {
         priority1: [
-            { id: 'p1-1', name: '헤이딜러', point: '플랫폼 경쟁력 강화', msg: "'헤이딜러 인증'의 신뢰도를 완성하십시오.", status: '접촉 전', adoption: '도입 가능성 매우 높음', db: "• 재무/실적: 매출 898.5억 원 ('23년), 누적 투자 1,210억 원<br>• 대표 연락처: 1599-4783<br>• 운영사: (주)피알앤디<br>• 핵심 담당자 (추정): 박진우 대표, 최고제품책임자(CPO)<br>• 최신 동향: 신뢰도 관련 서비스 지속 출시하며 온라인 플랫폼 중 압도적인 성장세 기록." },
-            { id: 'p1-2', name: '차봇모빌리티', point: '복잡한 계약 관리 해결', msg: "고객 약관부터 파트너 제휴까지, 모든 계약을 한번에 해결해 드립니다.", status: '접촉 전', adoption: '도입 가능성 높음', db: "• 재무/실적: 누적 투자 226억 원<br>• 대표 연락처: 1644-0138<br>• 핵심 담당자 (추정): 강성근 대표, 사업/제휴 담당 부서<br>• 최신 동향: 운전자 생애주기 맞춤형 서비스 확장, B2B 파트너십 강화." },
-            { id: 'p1-3', name: 'KB차차차', point: '금융 연계 강화', msg: "자동차 대출 심사부터 실행까지, 원스톱 처리하여 고객 이탈을 막으십시오.", status: '접촉 전', adoption: '필수 도입', db: "• 운영사: KB캐피탈<br>• 대표 연락처: 1544-1200<br>• 핵심 담당자 (추정): 디지털전략팀, 자동차금융팀<br>• 최신 동향: KB금융그룹 내 연계 서비스 및 비대면 대출 프로세스 고도화에 집중." },
-            { id: 'p1-4', name: '첫차', point: '모바일 경험 최적화', msg: "MZ세대는 기다리지 않습니다. '첫차' 앱 안에서 계약까지 한번에 끝내는 경험을 제공하세요.", status: '접촉 전', adoption: '도입 가능성 높음', db: "• 운영사: (주)미스터픽<br>• 대표 연락처: 1661-9789<br>• 핵심 담당자 (추정): 최철훈, 송상훈 공동대표, 플랫폼 기획팀<br>• 최신 동향: 젊은 층 대상의 직관적인 UI/UX 및 비대면 서비스 강화." },
-            { id: 'p1-5', name: '카머스', point: '해외 바이어 계약 편의성', msg: "해외 바이어도 클릭 한 번으로 서명 완료! 수출 계약의 속도를 높여보세요.", status: '접촉 전', adoption: '도입 가능성 높음', db: "• 재무/실적: 시리즈A 100억 원 투자 유치<br>• 대표 연락처: 홈페이지 문의<br>• 핵심 담당자 (추정): 안인성 대표, 해외영업팀<br>• 최신 동향: 투자 유치 후 수출 국가 및 물량 확대에 집중." },
-            { id: 'p1-6', name: '아이트럭', point: 'B2B 거래 효율 극대화', msg: "법인 고객의 복잡한 상용차 계약, 전자서명으로 5분 안에 끝내십시오.", status: '접촉 전', adoption: '도입 가능성 높음', db: "• 재무/실적: 누적 투자 110억 원<br>• 대표 연락처: 02-4949-8989<br>• 핵심 담당자 (추정): 정혜인 대표, B2B 영업팀<br>• 최신 동향: 상용차 관련 금융 및 부가 서비스 연계 강화." },
-            { id: 'p1-7', name: '오토플러스', point: '인증 중고차 신뢰도', msg: "'리본카'의 품질, 위변조 불가능한 전자 보증서로 고객에게 증명하십시오.", status: '접촉 전', adoption: '도입 완료', db: "• 재무/실적: 매출 3,517억 원 / 판매 12,407대 ('24년)<br>• 대표 연락처: 1544-2277<br>• 핵심 담당자 (추정): 플랫폼사업본부, 마케팅팀<br>• 최신 동향: 비대면 서비스 '리본카'의 품질 인증 및 보증 프로그램 강화." },
-            { id: 'p1-8', name: '오토핸즈', point: '온라인 경매 시스템 고도화', msg: "경매 낙찰부터 대금 정산까지, 모든 과정을 자동화하여 분쟁을 없애고 효율을 높이세요.", status: '접촉 전', adoption: '도입 가능성 높음', db: "• 재무/실적: 매출 1,336억 원 / 판매 6,370대 ('24년)<br>• 대표 연락처: 1800-5851<br>• 핵심 담당자 (추정): 온라인경매 사업부, IT 시스템 담당<br>• 최신 동향: B2B 온라인 경매 물량 확대 및 시스템 안정성 확보." },
-            { id: 'p1-9', name: 'AJ셀카', point: 'B2B 경매 효율화', msg: "수많은 회원사와의 경매 약정 및 차량 거래 계약, 전자화로 비용과 시간을 절감할 수 있습니다.", status: '접촉 전', adoption: '도입 가능성 높음', db: "• 대표 연락처: 1588-2252<br>• 핵심 담당자 (추정): 온라인플랫폼사업팀<br>• 최신 동향: '내차팔기' 서비스 등 온라인 비대면 채널 강화." },
-            { id: 'p1-10', name: '당근', point: '개인 간 거래 신뢰 확보', msg: "중고차 직거래 사기, 표준 전자계약서 제공으로 예방하고 '당근'의 신뢰도를 높일 수 있습니다.", status: '접촉 전', adoption: '도입 가능성 매우 높음', db: "• 재무/실적: 추정 거래 7.6만 대 ('24년)<br>• 대표 연락처: 1877-9739<br>• 핵심 담당자 (추정): 중고차 서비스팀, 신사업/광고팀<br>• 최신 동향: 중고차, 부동산 등 고가 품목의 거래 신뢰도 향상 방안 모색." },
-            { id: 'p1-11', name: '오토비긴즈', point: '데이터 계약 효율화', msg: "데이터 제공 및 파트너십 계약을 신속하고 투명하게 처리하세요.", status: '접촉 전', adoption: '도입 가능성 높음', db: "• 재무/실적: 엔카로부터 120억 원 투자 유치 ('22년)<br>• 대표 연락처: 02-2088-2640<br>• 핵심 담당자 (추정): 사업개발팀<br>• 최신 동향: 엔카와의 시너지를 통한 데이터 분석 서비스 고도화." },
-            { id: 'p1-12', name: '겟차', point: '신차 구매 경험 혁신', msg: "견적부터 계약까지, 고객이 모바일에서 모든 것을 해결하게 하십시오.", status: '접촉 전', adoption: '도입 가능성 높음', db: "• 재무/실적: 신한카드/캐피탈로부터 35억 원 투자 유치<br>• 대표 연락처: 1800-0456<br>• 핵심 담당자 (추정): 정유철 대표, 제휴 담당팀<br>• 최신 동향: 금융사와 연계한 신차 구매 서비스 강화." },
-            { id: 'p1-13', name: '제카', point: '상용차 B2B 거래 전문화', msg: "복잡한 상용차 거래 계약을 표준화하고 디지털로 전환하세요.", status: '접촉 전', adoption: '도입 가능성 매우 높음', db: "• 재무/실적: 누적 투자 180억 원<br>• 대표 연락처: 정보 확인 필요<br>• 핵심 담당자 (추정): 대표이사, 사업개발팀<br>• 최신 동향: 중고 상용차 시장의 정보 비대칭 문제 해결에 집중." }
+            { id: 'p1-1', name: '헤이딜러', point: '플랫폼 경쟁력 강화', msg: "'헤이딜러 인증'의 신뢰도를 완성하십시오.", adoption: '도입 가능성 매우 높음', db: "• 재무/실적: 매출 898.5억 원 ('23년), 누적 투자 1,210억 원<br>• 대표 연락처: 1599-4783<br>• 운영사: (주)피알앤디<br>• 핵심 담당자 (추정): 박진우 대표, 최고제품책임자(CPO)<br>• 최신 동향: 신뢰도 관련 서비스 지속 출시하며 온라인 플랫폼 중 압도적인 성장세 기록." },
+            { id: 'p1-2', name: '차봇모빌리티', point: '복잡한 계약 관리 해결', msg: "고객 약관부터 파트너 제휴까지, 모든 계약을 한번에 해결해 드립니다.", adoption: '도입 가능성 높음', db: "• 재무/실적: 누적 투자 226억 원<br>• 대표 연락처: 1644-0138<br>• 핵심 담당자 (추정): 강성근 대표, 사업/제휴 담당 부서<br>• 최신 동향: 운전자 생애주기 맞춤형 서비스 확장, B2B 파트너십 강화." },
+            { id: 'p1-3', name: 'KB차차차', point: '금융 연계 강화', msg: "자동차 대출 심사부터 실행까지, 원스톱 처리하여 고객 이탈을 막으십시오.", adoption: '필수 도입', db: "• 운영사: KB캐피탈<br>• 대표 연락처: 1544-1200<br>• 핵심 담당자 (추정): 디지털전략팀, 자동차금융팀<br>• 최신 동향: KB금융그룹 내 연계 서비스 및 비대면 대출 프로세스 고도화에 집중." },
+            { id: 'p1-4', name: '첫차', point: '모바일 경험 최적화', msg: "MZ세대는 기다리지 않습니다. '첫차' 앱 안에서 계약까지 한번에 끝내는 경험을 제공하세요.", adoption: '도입 가능성 높음', db: "• 운영사: (주)미스터픽<br>• 대표 연락처: 1661-9789<br>• 핵심 담당자 (추정): 최철훈, 송상훈 공동대표, 플랫폼 기획팀<br>• 최신 동향: 젊은 층 대상의 직관적인 UI/UX 및 비대면 서비스 강화." },
+            { id: 'p1-5', name: '카머스', point: '해외 바이어 계약 편의성', msg: "해외 바이어도 클릭 한 번으로 서명 완료! 수출 계약의 속도를 높여보세요.", adoption: '도입 가능성 높음', db: "• 재무/실적: 시리즈A 100억 원 투자 유치<br>• 대표 연락처: 홈페이지 문의<br>• 핵심 담당자 (추정): 안인성 대표, 해외영업팀<br>• 최신 동향: 투자 유치 후 수출 국가 및 물량 확대에 집중." },
+            { id: 'p1-6', name: '아이트럭', point: 'B2B 거래 효율 극대화', msg: "법인 고객의 복잡한 상용차 계약, 전자서명으로 5분 안에 끝내십시오.", adoption: '도입 가능성 높음', db: "• 재무/실적: 누적 투자 110억 원<br>• 대표 연락처: 02-4949-8989<br>• 핵심 담당자 (추정): 정혜인 대표, B2B 영업팀<br>• 최신 동향: 상용차 관련 금융 및 부가 서비스 연계 강화." },
+            { id: 'p1-7', name: '오토플러스', point: '인증 중고차 신뢰도', msg: "'리본카'의 품질, 위변조 불가능한 전자 보증서로 고객에게 증명하십시오.", adoption: '도입 완료', db: "• 재무/실적: 매출 3,517억 원 / 판매 12,407대 ('24년)<br>• 대표 연락처: 1544-2277<br>• 핵심 담당자 (추정): 플랫폼사업본부, 마케팅팀<br>• 최신 동향: 비대면 서비스 '리본카'의 품질 인증 및 보증 프로그램 강화." },
+            { id: 'p1-8', name: '오토핸즈', point: '온라인 경매 시스템 고도화', msg: "경매 낙찰부터 대금 정산까지, 모든 과정을 자동화하여 분쟁을 없애고 효율을 높이세요.", adoption: '도입 가능성 높음', db: "• 재무/실적: 매출 1,336억 원 / 판매 6,370대 ('24년)<br>• 대표 연락처: 1800-5851<br>• 핵심 담당자 (추정): 온라인경매 사업부, IT 시스템 담당<br>• 최신 동향: B2B 온라인 경매 물량 확대 및 시스템 안정성 확보." },
+            { id: 'p1-9', name: 'AJ셀카', point: 'B2B 경매 효율화', msg: "수많은 회원사와의 경매 약정 및 차량 거래 계약, 전자화로 비용과 시간을 절감할 수 있습니다.", adoption: '도입 가능성 높음', db: "• 대표 연락처: 1588-2252<br>• 핵심 담당자 (추정): 온라인플랫폼사업팀<br>• 최신 동향: '내차팔기' 서비스 등 온라인 비대면 채널 강화." },
+            { id: 'p1-10', name: '당근', point: '개인 간 거래 신뢰 확보', msg: "중고차 직거래 사기, 표준 전자계약서 제공으로 예방하고 '당근'의 신뢰도를 높일 수 있습니다.", adoption: '도입 가능성 매우 높음', db: "• 재무/실적: 추정 거래 7.6만 대 ('24년)<br>• 대표 연락처: 1877-9739<br>• 핵심 담당자 (추정): 중고차 서비스팀, 신사업/광고팀<br>• 최신 동향: 중고차, 부동산 등 고가 품목의 거래 신뢰도 향상 방안 모색." },
+            { id: 'p1-11', name: '오토비긴즈', point: '데이터 계약 효율화', msg: "데이터 제공 및 파트너십 계약을 신속하고 투명하게 처리하세요.", adoption: '도입 가능성 높음', db: "• 재무/실적: 엔카로부터 120억 원 투자 유치 ('22년)<br>• 대표 연락처: 02-2088-2640<br>• 핵심 담당자 (추정): 사업개발팀<br>• 최신 동향: 엔카와의 시너지를 통한 데이터 분석 서비스 고도화." },
+            { id: 'p1-12', name: '겟차', point: '신차 구매 경험 혁신', msg: "견적부터 계약까지, 고객이 모바일에서 모든 것을 해결하게 하십시오.", adoption: '도입 가능성 높음', db: "• 재무/실적: 신한카드/캐피탈로부터 35억 원 투자 유치<br>• 대표 연락처: 1800-0456<br>• 핵심 담당자 (추정): 정유철 대표, 제휴 담당팀<br>• 최신 동향: 금융사와 연계한 신차 구매 서비스 강화." },
+            { id: 'p1-13', name: '제카', point: '상용차 B2B 거래 전문화', msg: "복잡한 상용차 거래 계약을 표준화하고 디지털로 전환하세요.", adoption: '도입 가능성 매우 높음', db: "• 재무/실적: 누적 투자 180억 원<br>• 대표 연락처: 정보 확인 필요<br>• 핵심 담당자 (추정): 대표이사, 사업개발팀<br>• 최신 동향: 중고 상용차 시장의 정보 비대칭 문제 해결에 집중." }
         ],
         priority2: [
-            { id: 'p2-1', name: 'K Car', point: '특정 업무(비대면) 개선', msg: "'내차사기 홈서비스'의 비대면 계약, 고객이 더 편하게 만들 수 있습니다.", status: '접촉 전', adoption: '도입 완료', db: "• 재무/실적: 매출 2조 3천억 원 / 판매 72,709대 ('24년)<br>• 대표 연락처: 1588-5455<br>• 핵심 담당자 (추정): 디지털플랫폼팀, 비대면사업부<br>• 최신 동향: 온라인과 오프라인을 잇는 O2O 서비스 고도화." },
-            { id: 'p2-2', name: '엔카', point: '딜러 회원 및 데이터 관리', msg: "수만 명의 딜러 회원 계약과 데이터 제공 계약, 전자서명으로 효율적이고 안전하게 관리하십시오.", status: '접촉 전', adoption: '도입 완료', db: "• 재무/실적: 매출 869억 원 ('23년)<br>• 대표 연락처: 1599-5455<br>• 핵심 담당자 (추정): 비즈니스 제휴팀, 데이터 사업팀<br>• 최신 동향: AI 기반 시세 예측, 데이터 상품 판매 등 플랫폼의 데이터 사업 강화." },
-            { id: 'p2-3', name: '현대/기아', point: '브랜드 신뢰도 강화', msg: "인증 중고차의 '신뢰', 위변조 불가능한 전자 보증서로 증명하십시오.", status: '접촉 전', adoption: '도입 완료', db: "• 재무/실적: 현대 3,677대, 기아 7,508대 판매 ('24년)<br>• 대표 연락처: 현대 1522-0880, 기아 080-200-2000<br>• 핵심 담당자 (추정): 국내인증중고차사업팀<br>• 최신 동향: 인증 중고차 매물 확대 및 브랜드 신뢰도 제고 활동에 집중." },
-            { id: 'p2-4', name: '롯데렌터카', point: '렌터카 및 경매 연계', msg: "장기렌터카 계약부터 중고차 경매까지, 그룹 내 모든 자동차 계약 프로세스를 통합 관리하세요.", status: '접촉 전', adoption: '도입 완료', db: "• 재무/실적: 어피니티로부터 1조 5,729억 원 투자 유치 ('25년)<br>• 대표 연락처: 롯데렌탈 대표번호 통해 연결<br>• 핵심 담당자 (추정): 디지털혁신팀, 중고차사업팀<br>• 최신 동향: 렌탈 사업과 중고차 판매(경매) 사업 간의 시너지 창출." },
-            { id: 'p2-5', name: 'SK렌터카', point: '인증 중고차 및 렌탈', msg: "'SK렌카 인증 중고차'의 계약 과정, 전자화로 고객 만족도를 한 단계 높일 수 있습니다.", status: '접촉 전', adoption: '도입 완료', db: "• 재무/실적: 어피니티로부터 8,200억 원 투자 유치 ('25년)<br>• 대표 연락처: SK렌터카 대표번호 통해 연결<br>• 핵심 담당자 (추정): 인증중고차사업팀, 디지털전략팀<br>• 최신 동향: 온라인 채널을 통한 다이렉트 렌탈 및 중고차 판매 강화." },
-            { id: 'p2-6', name: '도이치오토월드', point: '매매단지 운영 디지털화', msg: "단지 내 수많은 상사의 계약을 디지털로 통합 관리하여 신뢰도를 높이세요.", status: '접촉 전', adoption: '도입 필요', db: "• 재무/실적: 연간 매도 126,249대 ('24년)<br>• 대표 연락처: 1522-2269<br>• 핵심 담당자 (추정): 단지 운영사무실, 상사 협의회<br>• 최신 동향: 국내 최대 규모의 복합 매매단지로 운영 안정화에 집중." },
-            { id: 'p2-7', name: '엠파크', point: '입주 상사 지원 강화', msg: "입주 상사들에게 표준 전자계약 시스템을 제공하여 거래 투명성을 높이세요.", status: '접촉 전', adoption: '도입 필요', db: "• 재무/실적: 연간 매도 75,597대 ('24년)<br>• 대표 연락처: 1544-4967<br>• 핵심 담당자 (추정): 단지 운영팀<br>• 최신 동향: 허위매물 근절 등 고객 신뢰도 향상 프로그램 운영." },
-            { id: 'p2-8', name: '오토허브', point: '고객 경험 선진화', msg: "방문 고객이 종이 서류 없이 스마트폰으로 계약하게 하여 만족도를 높이세요.", status: '접촉 전', adoption: '도입 필요', db: "• 재무/실적: 연간 매도 39,559대 ('24년)<br>• 대표 연락처: 031-5182-5000<br>• 핵심 담당자 (추정): 단지 운영팀<br>• 최신 동향: 가족 단위 방문객을 위한 편의시설 확충 등 복합 문화 공간 지향." },
-            { id: 'p2-9', name: '국민차매매단지', point: '거래 프로세스 현대화', msg: "전통적인 매매단지의 거래 방식을 디지털로 전환하여 경쟁력을 확보하세요.", status: '접촉 전', adoption: '도입 필요', db: "• 재무/실적: 연간 매도 21,074대 ('24년)<br>• 대표 연락처: 1600-7541<br>• 핵심 담당자 (추정): 단지 조합 또는 운영위원회<br>• 최신 동향: 주변 신규 단지와의 경쟁 속에서 서비스 개선 모색." },
-            { id: 'p2-10', name: '오토돔', point: '신뢰 기반 운영', msg: "전자계약 시스템 도입으로 투명한 거래 환경을 구축하여 고객 신뢰를 얻으세요.", status: '접촉 전', adoption: '도입 필요', db: "• 재무/실적: 연간 매도 19,989대 ('24년)<br>• 대표 연락처: 031-8084-7000<br>• 핵심 담당자 (추정): 단지 운영팀<br>• 최신 동향: 지역 기반의 신뢰도 높은 매매단지로 포지셔닝." }
+            { id: 'p2-1', name: 'K Car', point: '특정 업무(비대면) 개선', msg: "'내차사기 홈서비스'의 비대면 계약, 고객이 더 편하게 만들 수 있습니다.", adoption: '도입 완료', db: "• 재무/실적: 매출 2조 3천억 원 / 판매 72,709대 ('24년)<br>• 대표 연락처: 1588-5455<br>• 핵심 담당자 (추정): 디지털플랫폼팀, 비대면사업부<br>• 최신 동향: 온라인과 오프라인을 잇는 O2O 서비스 고도화." },
+            { id: 'p2-2', name: '엔카', point: '딜러 회원 및 데이터 관리', msg: "수만 명의 딜러 회원 계약과 데이터 제공 계약, 전자서명으로 효율적이고 안전하게 관리하십시오.", adoption: '도입 완료', db: "• 재무/실적: 매출 869억 원 ('23년)<br>• 대표 연락처: 1599-5455<br>• 핵심 담당자 (추정): 비즈니스 제휴팀, 데이터 사업팀<br>• 최신 동향: AI 기반 시세 예측, 데이터 상품 판매 등 플랫폼의 데이터 사업 강화." },
+            { id: 'p2-3', name: '현대/기아', point: '브랜드 신뢰도 강화', msg: "인증 중고차의 '신뢰', 위변조 불가능한 전자 보증서로 증명하십시오.", adoption: '도입 완료', db: "• 재무/실적: 현대 3,677대, 기아 7,508대 판매 ('24년)<br>• 대표 연락처: 현대 1522-0880, 기아 080-200-2000<br>• 핵심 담당자 (추정): 국내인증중고차사업팀<br>• 최신 동향: 인증 중고차 매물 확대 및 브랜드 신뢰도 제고 활동에 집중." },
+            { id: 'p2-4', name: '롯데렌터카', point: '렌터카 및 경매 연계', msg: "장기렌터카 계약부터 중고차 경매까지, 그룹 내 모든 자동차 계약 프로세스를 통합 관리하세요.", adoption: '도입 완료', db: "• 재무/실적: 어피니티로부터 1조 5,729억 원 투자 유치 ('25년)<br>• 대표 연락처: 롯데렌탈 대표번호 통해 연결<br>• 핵심 담당자 (추정): 디지털혁신팀, 중고차사업팀<br>• 최신 동향: 렌탈 사업과 중고차 판매(경매) 사업 간의 시너지 창출." },
+            { id: 'p2-5', name: 'SK렌터카', point: '인증 중고차 및 렌탈', msg: "'SK렌카 인증 중고차'의 계약 과정, 전자화로 고객 만족도를 한 단계 높일 수 있습니다.", adoption: '도입 완료', db: "• 재무/실적: 어피니티로부터 8,200억 원 투자 유치 ('25년)<br>• 대표 연락처: SK렌터카 대표번호 통해 연결<br>• 핵심 담당자 (추정): 인증중고차사업팀, 디지털전략팀<br>• 최신 동향: 온라인 채널을 통한 다이렉트 렌탈 및 중고차 판매 강화." },
+            { id: 'p2-6', name: '도이치오토월드', point: '매매단지 운영 디지털화', msg: "단지 내 수많은 상사의 계약을 디지털로 통합 관리하여 신뢰도를 높이세요.", adoption: '도입 필요', db: "• 재무/실적: 연간 매도 126,249대 ('24년)<br>• 대표 연락처: 1522-2269<br>• 핵심 담당자 (추정): 단지 운영사무실, 상사 협의회<br>• 최신 동향: 국내 최대 규모의 복합 매매단지로 운영 안정화에 집중." },
+            { id: 'p2-7', name: '엠파크', point: '입주 상사 지원 강화', msg: "입주 상사들에게 표준 전자계약 시스템을 제공하여 거래 투명성을 높이세요.", adoption: '도입 필요', db: "• 재무/실적: 연간 매도 75,597대 ('24년)<br>• 대표 연락처: 1544-4967<br>• 핵심 담당자 (추정): 단지 운영팀<br>• 최신 동향: 허위매물 근절 등 고객 신뢰도 향상 프로그램 운영." },
+            { id: 'p2-8', name: '오토허브', point: '고객 경험 선진화', msg: "방문 고객이 종이 서류 없이 스마트폰으로 계약하게 하여 만족도를 높이세요.", adoption: '도입 필요', db: "• 재무/실적: 연간 매도 39,559대 ('24년)<br>• 대표 연락처: 031-5182-5000<br>• 핵심 담당자 (추정): 단지 운영팀<br>• 최신 동향: 가족 단위 방문객을 위한 편의시설 확충 등 복합 문화 공간 지향." },
+            { id: 'p2-9', name: '국민차매매단지', point: '거래 프로세스 현대화', msg: "전통적인 매매단지의 거래 방식을 디지털로 전환하여 경쟁력을 확보하세요.", adoption: '도입 필요', db: "• 재무/실적: 연간 매도 21,074대 ('24년)<br>• 대표 연락처: 1600-7541<br>• 핵심 담당자 (추정): 단지 조합 또는 운영위원회<br>• 최신 동향: 주변 신규 단지와의 경쟁 속에서 서비스 개선 모색." },
+            { id: 'p2-10', name: '오토돔', point: '신뢰 기반 운영', msg: "전자계약 시스템 도입으로 투명한 거래 환경을 구축하여 고객 신뢰를 얻으세요.", adoption: '도입 필요', db: "• 재무/실적: 연간 매도 19,989대 ('24년)<br>• 대표 연락처: 031-8084-7000<br>• 핵심 담당자 (추정): 단지 운영팀<br>• 최신 동향: 지역 기반의 신뢰도 높은 매매단지로 포지셔닝." }
         ]
     };
 
@@ -262,24 +243,13 @@ document.addEventListener('DOMContentLoaded', function () {
         { risk: '기술적 장벽', likelihood: '중간', impact: '높음', mitigation: "• **대응 1 (사전 준비):** 영업 단계에서 기술지원팀과 긴밀히 협력하여, 예상되는 기술적 문제에 대한 해결 방안을 미리 준비.<br>• **대응 2 (전문성 부각):** 다양한 산업군의 성공적인 API 연동 사례를 제시하여 기술적 우려 해소." }
     ];
 
-    const salesStatuses = ['접촉 전', '접촉 중', '미팅 완료', 'PoC 제안', '계약 완료', '보류'];
-    const statusColors = {
-        '접촉 전': 'border-gray-300',
-        '접촉 중': 'border-blue-500',
-        '미팅 완료': 'border-green-500',
-        'PoC 제안': 'border-purple-500',
-        '계약 완료': 'border-yellow-400',
-        '보류': 'border-red-500'
-    };
-
     let adoptionChartInstance;
     let adoptionGroups = {};
 
-    function updateDashboard() {
+    function updateDashboard(data) {
         const currentPriority = document.querySelector('#priority-1-btn.bg-blue-600') ? 'priority1' : 'priority2';
-        const searchTerm = document.getElementById('search-input').value.toLowerCase();
-        renderTargets(currentPriority, searchTerm);
-        updateAdoptionChart();
+        renderTargets(currentPriority, data);
+        updateAdoptionChart(data);
     }
     
     // Mobile Menu Toggle
@@ -333,12 +303,12 @@ document.addEventListener('DOMContentLoaded', function () {
     new Chart(ctxMarket, {
         type: 'bar',
         data: {
-            labels: ['전체 거래량', '사업자 거래(B2B)', '당사자 거래(P2P)'],
+            labels: ['사업자 거래(B2B)', '당사자 거래(P2P)'],
             datasets: [{
                 label: '연간 거래량 (대)',
-                data: [3899581, 2541322, 1358259],
-                backgroundColor: ['rgba(59, 130, 246, 0.7)', 'rgba(37, 99, 235, 0.7)', 'rgba(147, 197, 253, 0.7)'],
-                borderColor: ['rgba(59, 130, 246, 1)', 'rgba(37, 99, 235, 1)', 'rgba(147, 197, 253, 1)'],
+                data: [2541322, 1358259],
+                backgroundColor: ['rgba(37, 99, 235, 0.7)', 'rgba(147, 197, 253, 0.7)'],
+                borderColor: ['rgba(37, 99, 235, 1)', 'rgba(147, 197, 253, 1)'],
                 borderWidth: 1
             }]
         },
@@ -350,8 +320,10 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Adoption Chart
-    function updateAdoptionChart() {
-        const allTargets = [...targetsData.priority1, ...targetsData.priority2];
+    function updateAdoptionChart(data) {
+        const allTargets = [...data.priority1, ...data.priority2];
+        document.getElementById('adoption-total-count').textContent = `(총 ${allTargets.length}개사)`;
+
         adoptionGroups = allTargets.reduce((acc, target) => {
             const statusKey = target.adoption.includes('완료') ? '도입 완료' : 
                               target.adoption.includes('필수') ? '필수 도입' :
@@ -364,11 +336,11 @@ document.addEventListener('DOMContentLoaded', function () {
         }, {});
 
         const labels = Object.keys(adoptionGroups);
-        const data = labels.map(label => adoptionGroups[label].length);
+        const chartData = labels.map(label => adoptionGroups[label].length);
         
         if (adoptionChartInstance) {
             adoptionChartInstance.data.labels = labels;
-            adoptionChartInstance.data.datasets[0].data = data;
+            adoptionChartInstance.data.datasets[0].data = chartData;
             adoptionChartInstance.update();
         } else {
             const ctxAdoption = document.getElementById('adoptionChart').getContext('2d');
@@ -378,14 +350,16 @@ document.addEventListener('DOMContentLoaded', function () {
                     labels: labels,
                     datasets: [{
                         label: '기업 수',
-                        data: data,
+                        data: chartData,
                         backgroundColor: ['#16a34a', '#f97316', '#3b82f6', '#ef4444'],
                     }]
                 },
                 options: {
                     responsive: true, maintainAspectRatio: false,
                     plugins: { 
-                        legend: { position: 'top' },
+                        legend: { 
+                            position: 'top',
+                        },
                         tooltip: {
                             callbacks: {
                                 label: function(context) {
@@ -403,6 +377,15 @@ document.addEventListener('DOMContentLoaded', function () {
                                     return companyLines;
                                 }
                             }
+                        },
+                        datalabels: {
+                            formatter: (value, ctx) => {
+                                return value;
+                            },
+                            color: '#fff',
+                            font: {
+                                weight: 'bold'
+                            }
                         }
                     }
                 }
@@ -417,52 +400,27 @@ document.addEventListener('DOMContentLoaded', function () {
     const modalCloseBtn = document.getElementById('modal-close-btn');
     const priority1Btn = document.getElementById('priority-1-btn');
     const priority2Btn = document.getElementById('priority-2-btn');
-    const searchInput = document.getElementById('search-input');
 
     function createTargetCard(target) {
         const card = document.createElement('div');
-        card.className = `target-card bg-white rounded-lg shadow-md p-4 cursor-pointer flex flex-col justify-between ${statusColors[target.status]}`;
-        
-        const selectOptions = salesStatuses.map(s => `<option value="${s}" ${s === target.status ? 'selected' : ''}>${s}</option>`).join('');
-        
+        card.className = 'target-card bg-white rounded-lg shadow-md p-6 cursor-pointer flex flex-col justify-between';
         card.innerHTML = `
             <div>
                 <h4 class="font-bold text-lg mb-2">${target.name}</h4>
-                <p class="text-sm text-gray-500 mb-3">${target.point}</p>
+                <p class="text-sm text-gray-500">${target.point}</p>
             </div>
-            <div class="mt-auto">
-                <select data-id="${target.id}" class="status-select w-full text-xs border border-gray-300 rounded-md px-2 py-1 bg-gray-50 focus:outline-none focus:ring-1 focus:ring-blue-500 mb-3">
-                    ${selectOptions}
-                </select>
-                <p class="text-blue-600 text-sm font-semibold text-right">자세히 보기 &rarr;</p>
-            </div>
+            <p class="text-blue-600 text-sm font-semibold mt-4 text-right">자세히 보기 &rarr;</p>
         `;
-        
-        card.querySelector('.status-select').addEventListener('change', (e) => {
-            const newStatus = e.target.value;
-            const targetId = e.target.dataset.id;
-            
-            const targetToUpdate = targetsData.priority1.find(t => t.id === targetId) || targetsData.priority2.find(t => t.id === targetId);
-            if (targetToUpdate) {
-                targetToUpdate.status = newStatus;
-            }
-            updateDashboard();
-        });
-
-        card.addEventListener('click', (e) => {
-            if (e.target.tagName.toLowerCase() !== 'select') {
-                openModal(target);
-            }
-        });
+        card.addEventListener('click', () => openModal(target));
         return card;
     }
 
-    function renderTargets(priority, searchTerm = '') {
+    function renderTargets(priority, data) {
         targetsGrid.innerHTML = '';
-        const filteredData = targetsData[priority].filter(t => t.name.toLowerCase().includes(searchTerm));
+        const filteredData = data[priority];
         
         if (filteredData.length === 0) {
-            targetsGrid.innerHTML = `<p class="text-gray-500 col-span-full text-center">검색 결과가 없습니다.</p>`;
+            targetsGrid.innerHTML = `<p class="text-gray-500 col-span-full text-center">결과가 없습니다.</p>`;
             return;
         }
 
@@ -472,7 +430,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function openModal(target) {
-        const adoptionHtml = target.db.replace(/(• 전자문서 도입 현황:.*?<br>)/, `$1<br>• 영업 상태: <span class="font-bold">${target.status}</span><br>`);
         modalBody.innerHTML = `
             <h3 class="text-2xl font-bold mb-4">${target.name}</h3>
             <div class="mb-6">
@@ -485,7 +442,7 @@ document.addEventListener('DOMContentLoaded', function () {
             </div>
             <div>
                 <p class="font-semibold text-gray-500 text-sm uppercase tracking-wider">영업 정보 (DB)</p>
-                <div class="text-gray-700 bg-gray-50 p-4 rounded-md mt-2">${adoptionHtml}</div>
+                <div class="text-gray-700 bg-gray-50 p-4 rounded-md mt-2">${target.db}</div>
             </div>
         `;
         modal.style.display = 'flex';
@@ -510,16 +467,12 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    searchInput.addEventListener('input', () => {
-        updateDashboard();
-    });
-
     priority1Btn.addEventListener('click', () => {
         priority1Btn.classList.add('bg-blue-600', 'text-white');
         priority1Btn.classList.remove('bg-white', 'text-gray-700', 'border', 'border-gray-300');
         priority2Btn.classList.add('bg-white', 'text-gray-700', 'border', 'border-gray-300');
         priority2Btn.classList.remove('bg-blue-600', 'text-white');
-        updateDashboard();
+        updateDashboard(targetsData);
     });
 
     priority2Btn.addEventListener('click', () => {
@@ -527,7 +480,7 @@ document.addEventListener('DOMContentLoaded', function () {
         priority2Btn.classList.remove('bg-white', 'text-gray-700', 'border', 'border-gray-300');
         priority1Btn.classList.add('bg-white', 'text-gray-700', 'border', 'border-gray-300');
         priority1Btn.classList.remove('bg-blue-600', 'text-white');
-        updateDashboard();
+        updateDashboard(targetsData);
     });
 
     // Risk Table
@@ -549,7 +502,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Initial render
-    updateDashboard();
+    updateDashboard(targetsData);
 });
 </script>
 
