@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>중고차 시장 공략 인터랙티브 영업 전략</title>
+    <title>이폼사인 중고차 시장 영업전략 보고서</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
@@ -43,7 +43,7 @@
     <!-- Header & Navigation -->
     <header class="bg-white/80 backdrop-blur-md sticky top-0 z-40 shadow-sm">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <h1 class="text-xl md:text-2xl font-bold text-blue-600">이폼사인 중고차 시장 공략 전략</h1>
+            <h1 class="text-xl md:text-2xl font-bold text-blue-600">이폼사인 중고차 시장 영업전략 보고서</h1>
             <div class="hidden md:flex space-x-8">
                 <a href="#summary" class="nav-link font-medium border-b-2 border-transparent pb-1">전략 개요</a>
                 <a href="#targets" class="nav-link font-medium border-b-2 border-transparent pb-1">타겟 기업</a>
@@ -115,7 +115,7 @@
             </div>
 
             <div class="flex justify-center space-x-4 mb-8">
-                <button id="priority-1-btn" class="px-6 py-2 font-semibold rounded-full bg-blue-600 text-white shadow-md">1순위 그룹 보기 (15개사)</button>
+                <button id="priority-1-btn" class="px-6 py-2 font-semibold rounded-full bg-blue-600 text-white shadow-md">1순위 그룹 보기 (16개사)</button>
                 <button id="priority-2-btn" class="px-6 py-2 font-semibold rounded-full bg-white text-gray-700 border border-gray-300">2순위 그룹 보기 (8개사)</button>
             </div>
             <div id="targets-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -210,31 +210,32 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const targetsData = {
         priority1: [
-            { id: 'p1-14', name: '케이카', point: '🔥 최우선 공략 (인바운드)', msg: "'내차사기 홈서비스'의 비대면 계약, 고객이 더 편하게 만들 수 있습니다.", adoption: '도입 완료', db: "• 재무/실적: 매출 2조 3천억 원 / 판매 72,709대 ('24년)<br>• 대표 연락처: 1588-5455<br>• 핵심 담당자 (추정): 디지털플랫폼팀, 비대면사업부<br>• 최신 동향: 온라인과 오프라인을 잇는 O2O 서비스 고도화." },
-            { id: 'p1-15', name: '엠파크', point: '🔥 최우선 공략 (인바운드)', msg: "입주 상사들에게 표준 전자계약 시스템을 제공하여 거래 투명성을 높이세요.", adoption: '도입 필요', db: "• 재무/실적: 연간 매도 75,597대 ('24년)<br>• 대표 연락처: 1544-4967<br>• 핵심 담당자 (추정): 단지 운영팀<br>• 최신 동향: 허위매물 근절 등 고객 신뢰도 향상 프로그램 운영." },
-            { id: 'p1-16', name: '디에스오토', point: '🎉 계약 완료', msg: "유관 부서 계약 완료", adoption: '도입 완료', db: "• 대표 연락처: 정보 확인 필요<br>• 최신 동향: 수도권 중심의 중대형 매매상사." },
-            { id: 'p1-17', name: '카통령', point: '🎉 계약 완료', msg: "유관 부서 계약 완료", adoption: '도입 완료', db: "• 대표 연락처: 1800-0892<br>• 최신 동향: 수원 지역 기반의 대형 매매단지." },
-            { id: 'p1-1', name: '헤이딜러', point: '플랫폼 경쟁력 강화', msg: "'헤이딜러 인증'의 신뢰도를 완성하십시오.", adoption: '도입 가능성 매우 높음', db: "• 재무/실적: 매출 898.5억 원 ('23년), 누적 투자 1,210억 원<br>• 대표 연락처: 1599-4783<br>• 운영사: (주)피알앤디<br>• 핵심 담당자 (추정): 박진우 대표, 최고제품책임자(CPO)<br>• 최신 동향: 신뢰도 관련 서비스 지속 출시하며 온라인 플랫폼 중 압도적인 성장세 기록." },
-            { id: 'p1-2', name: '차봇모빌리티', point: '복잡한 계약 관리 해결', msg: "고객 약관부터 파트너 제휴까지, 모든 계약을 한번에 해결해 드립니다.", adoption: '도입 가능성 높음', db: "• 재무/실적: 누적 투자 226억 원<br>• 대표 연락처: 1644-0138<br>• 핵심 담당자 (추정): 강성근 대표, 사업/제휴 담당 부서<br>• 최신 동향: 운전자 생애주기 맞춤형 서비스 확장, B2B 파트너십 강화." },
-            { id: 'p1-3', name: 'KB차차차', point: '금융 연계 강화', msg: "자동차 대출 심사부터 실행까지, 원스톱 처리하여 고객 이탈을 막으십시오.", adoption: '필수 도입', db: "• 운영사: KB캐피탈<br>• 대표 연락처: 1544-1200<br>• 핵심 담당자 (추정): 디지털전략팀, 자동차금융팀<br>• 최신 동향: KB금융그룹 내 연계 서비스 및 비대면 대출 프로세스 고도화에 집중." },
-            { id: 'p1-4', name: '첫차', point: '모바일 경험 최적화', msg: "MZ세대는 기다리지 않습니다. '첫차' 앱 안에서 계약까지 한번에 끝내는 경험을 제공하세요.", adoption: '도입 가능성 높음', db: "• 운영사: (주)미스터픽<br>• 대표 연락처: 1661-9789<br>• 핵심 담당자 (추정): 최철훈, 송상훈 공동대표, 플랫폼 기획팀<br>• 최신 동향: 젊은 층 대상의 직관적인 UI/UX 및 비대면 서비스 강화." },
-            { id: 'p1-5', name: '카머스', point: '해외 바이어 계약 편의성', msg: "해외 바이어도 클릭 한 번으로 서명 완료! 수출 계약의 속도를 높여보세요.", adoption: '도입 가능성 높음', db: "• 재무/실적: 시리즈A 100억 원 투자 유치<br>• 대표 연락처: 홈페이지 문의<br>• 핵심 담당자 (추정): 안인성 대표, 해외영업팀<br>• 최신 동향: 투자 유치 후 수출 국가 및 물량 확대에 집중." },
-            { id: 'p1-6', name: '아이트럭', point: 'B2B 거래 효율 극대화', msg: "법인 고객의 복잡한 상용차 계약, 전자서명으로 5분 안에 끝내십시오.", adoption: '도입 가능성 높음', db: "• 재무/실적: 누적 투자 110억 원<br>• 대표 연락처: 02-4949-8989<br>• 핵심 담당자 (추정): 정혜인 대표, B2B 영업팀<br>• 최신 동향: 상용차 관련 금융 및 부가 서비스 연계 강화." },
-            { id: 'p1-7', name: '오토플러스', point: '인증 중고차 신뢰도', msg: "'리본카'의 품질, 위변조 불가능한 전자 보증서로 고객에게 증명하십시오.", adoption: '도입 완료', db: "• 재무/실적: 매출 3,517억 원 / 판매 12,407대 ('24년)<br>• 대표 연락처: 1544-2277<br>• 핵심 담당자 (추정): 플랫폼사업본부, 마케팅팀<br>• 최신 동향: 비대면 서비스 '리본카'의 품질 인증 및 보증 프로그램 강화." },
-            { id: 'p1-8', name: '오토핸즈', point: '온라인 경매 시스템 고도화', msg: "경매 낙찰부터 대금 정산까지, 모든 과정을 자동화하여 분쟁을 없애고 효율을 높이세요.", adoption: '도입 가능성 높음', db: "• 재무/실적: 매출 1,336억 원 / 판매 6,370대 ('24년)<br>• 대표 연락처: 1800-5851<br>• 핵심 담당자 (추정): 온라인경매 사업부, IT 시스템 담당<br>• 최신 동향: B2B 온라인 경매 물량 확대 및 시스템 안정성 확보." },
-            { id: 'p1-9', name: 'AJ셀카', point: 'B2B 경매 효율화', msg: "수많은 회원사와의 경매 약정 및 차량 거래 계약, 전자화로 비용과 시간을 절감할 수 있습니다.", adoption: '도입 가능성 높음', db: "• 대표 연락처: 1588-2252<br>• 핵심 담당자 (추정): 온라인플랫폼사업팀<br>• 최신 동향: '내차팔기' 서비스 등 온라인 비대면 채널 강화." },
-            { id: 'p1-11', name: '오토비긴즈', point: '데이터 계약 효율화', msg: "데이터 제공 및 파트너십 계약을 신속하고 투명하게 처리하세요.", adoption: '도입 가능성 높음', db: "• 재무/실적: 엔카로부터 120억 원 투자 유치 ('22년)<br>• 대표 연락처: 02-2088-2640<br>• 핵심 담당자 (추정): 사업개발팀<br>• 최신 동향: 엔카와의 시너지를 통한 데이터 분석 서비스 고도화." },
-            { id: 'p1-12', name: '겟차', point: '신차 구매 경험 혁신', msg: "견적부터 계약까지, 고객이 모바일에서 모든 것을 해결하게 하십시오.", adoption: '도입 가능성 높음', db: "• 재무/실적: 신한카드/캐피탈로부터 35억 원 투자 유치<br>• 대표 연락처: 1800-0456<br>• 핵심 담당자 (추정): 정유철 대표, 제휴 담당팀<br>• 최신 동향: 금융사와 연계한 신차 구매 서비스 강화." }
+            { id: 'p1-14', name: '케이카', point: '🔥 최우선 공략 (인바운드)', statusText: 'EP사업부 정문승, 오즈이폼으로 영업 진행 중', url: 'https://www.kcar.com', adoption: '도입 완료', db: "• 재무/실적: 매출 2조 3천억 원 / 판매 72,709대 ('24년)<br>• 대표 연락처: 1588-5455<br>• 핵심 담당자 (추정): 디지털플랫폼팀, 비대면사업부<br>• 최신 동향: 온라인과 오프라인을 잇는 O2O 서비스 고도화." },
+            { id: 'p1-15', name: '엠파크', point: '🔥 최우선 공략 (인바운드)', statusText: '', url: 'https://www.m-park.co.kr', adoption: '도입 필요', db: "• 재무/실적: 연간 매도 75,597대 ('24년)<br>• 대표 연락처: 1544-4967<br>• 핵심 담당자 (추정): 단지 운영팀<br>• 최신 동향: 허위매물 근절 등 고객 신뢰도 향상 프로그램 운영." },
+            { id: 'p1-16', name: '디에스오토', point: '🎉 계약 완료', statusText: 'EP사업부 정문승 수주 완료', url: '#', adoption: '도입 완료', db: "• 대표 연락처: 정보 확인 필요<br>• 최신 동향: 수도권 중심의 중대형 매매상사." },
+            { id: 'p1-17', name: '카통령', point: '🎉 계약 완료', statusText: 'EP사업부 정문승 수주 완료', url: 'http://xn--910b19kv5e.com/', adoption: '도입 완료', db: "• 대표 연락처: 1800-0892<br>• 최신 동향: 수원 지역 기반의 대형 매매단지." },
+            { id: 'p1-1', name: '헤이딜러', point: '플랫폼 경쟁력 강화', statusText: '', url: 'https://www.heydealer.com', adoption: '도입 가능성 매우 높음', db: "• 재무/실적: 매출 898.5억 원 ('23년), 누적 투자 1,210억 원<br>• 대표 연락처: 1599-4783<br>• 운영사: (주)피알앤디<br>• 핵심 담당자 (추정): 박진우 대표, 최고제품책임자(CPO)<br>• 최신 동향: 신뢰도 관련 서비스 지속 출시하며 온라인 플랫폼 중 압도적인 성장세 기록." },
+            { id: 'p1-2', name: '차봇모빌리티', point: '복잡한 계약 관리 해결', statusText: '', url: 'https://www.chabot.co.kr', adoption: '도입 가능성 높음', db: "• 재무/실적: 누적 투자 226억 원<br>• 대표 연락처: 1644-0138<br>• 핵심 담당자 (추정): 강성근 대표, 사업/제휴 담당 부서<br>• 최신 동향: 운전자 생애주기 맞춤형 서비스 확장, B2B 파트너십 강화." },
+            { id: 'p1-3', name: 'KB차차차', point: '금융 연계 강화', statusText: '', url: 'https://www.kbchachacha.com', adoption: '필수 도입', db: "• 운영사: KB캐피탈<br>• 대표 연락처: 1544-1200<br>• 핵심 담당자 (추정): 디지털전략팀, 자동차금융팀<br>• 최신 동향: KB금융그룹 내 연계 서비스 및 비대면 대출 프로세스 고도화에 집중." },
+            { id: 'p1-4', name: '첫차', point: '모바일 경험 최적화', statusText: '', url: 'https://chutcha.net', adoption: '도입 가능성 높음', db: "• 운영사: (주)미스터픽<br>• 대표 연락처: 1661-9789<br>• 핵심 담당자 (추정): 최철훈, 송상훈 공동대표, 플랫폼 기획팀<br>• 최신 동향: 젊은 층 대상의 직관적인 UI/UX 및 비대면 서비스 강화." },
+            { id: 'p1-5', name: '카머스', point: '해외 바이어 계약 편의성', statusText: '', url: 'https://carmors.com', adoption: '도입 가능성 높음', db: "• 재무/실적: 시리즈A 100억 원 투자 유치<br>• 대표 연락처: 홈페이지 문의<br>• 핵심 담당자 (추정): 안인성 대표, 해외영업팀<br>• 최신 동향: 투자 유치 후 수출 국가 및 물량 확대에 집중." },
+            { id: 'p1-6', name: '아이트럭', point: 'B2B 거래 효율 극대화', statusText: '', url: 'https://www.itruck.co.kr', adoption: '도입 가능성 높음', db: "• 재무/실적: 누적 투자 110억 원<br>• 대표 연락처: 02-4949-8989<br>• 핵심 담당자 (추정): 정혜인 대표, B2B 영업팀<br>• 최신 동향: 상용차 관련 금융 및 부가 서비스 연계 강화." },
+            { id: 'p1-7', name: '오토플러스', point: '인증 중고차 신뢰도', statusText: '', url: 'https://www.autoplus.co.kr', adoption: '도입 완료', db: "• 재무/실적: 매출 3,517억 원 / 판매 12,407대 ('24년)<br>• 대표 연락처: 1544-2277<br>• 핵심 담당자 (추정): 플랫폼사업본부, 마케팅팀<br>• 최신 동향: 비대면 서비스 '리본카'의 품질 인증 및 보증 프로그램 강화." },
+            { id: 'p1-8', name: '오토핸즈', point: '온라인 경매 시스템 고도화', statusText: '', url: 'https://www.autohands.co.kr', adoption: '도입 가능성 높음', db: "• 재무/실적: 매출 1,336억 원 / 판매 6,370대 ('24년)<br>• 대표 연락처: 1800-5851<br>• 핵심 담당자 (추정): 온라인경매 사업부, IT 시스템 담당<br>• 최신 동향: B2B 온라인 경매 물량 확대 및 시스템 안정성 확보." },
+            { id: 'p1-9', name: '케이오토뱅크 (AJ셀카)', point: '신규 유지보수 진행', statusText: 'MA사업본부 박희진, 신규 유지보수 진행 중', url: 'https://www.autosellcar.com/', adoption: '도입 가능성 높음', db: "• 대표 연락처: 1588-2252<br>• 핵심 담당자 (추정): 온라인플랫폼사업팀<br>• 최신 동향: '내차팔기' 서비스 등 온라인 비대면 채널 강화." },
+            { id: 'p1-11', name: '오토비긴즈', point: '데이터 계약 효율화', statusText: '', url: 'https://autobegins.com', adoption: '도입 가능성 높음', db: "• 재무/실적: 엔카로부터 120억 원 투자 유치 ('22년)<br>• 대표 연락처: 02-2088-2640<br>• 핵심 담당자 (추정): 사업개발팀<br>• 최신 동향: 엔카와의 시너지를 통한 데이터 분석 서비스 고도화." },
+            { id: 'p1-12', name: '겟차', point: '신차 구매 경험 혁신', statusText: '', url: 'https://getcha.kr', adoption: '도입 가능성 높음', db: "• 재무/실적: 신한카드/캐피탈로부터 35억 원 투자 유치<br>• 대표 연락처: 1800-0456<br>• 핵심 담당자 (추정): 정유철 대표, 제휴 담당팀<br>• 최신 동향: 금융사와 연계한 신차 구매 서비스 강화." },
+            { id: 'p1-18', name: '당근', point: '개인 간 거래 신뢰 확보', statusText: '', url: 'https://www.daangn.com/kr/cars/', adoption: '도입 가능성 매우 높음', db: "• 재무/실적: 추정 거래 7.6만 대 ('24년)<br>• 대표 연락처: 1877-9739<br>• 핵심 담당자 (추정): 중고차 서비스팀, 신사업/광고팀<br>• 최신 동향: 중고차, 부동산 등 고가 품목의 거래 신뢰도 향상 방안 모색." }
         ],
         priority2: [
-            { id: 'p2-2', name: '엔카', point: '딜러 회원 및 데이터 관리', msg: "수만 명의 딜러 회원 계약과 데이터 제공 계약, 전자서명으로 효율적이고 안전하게 관리하십시오.", adoption: '도입 완료', db: "• 재무/실적: 매출 869억 원 ('23년)<br>• 대표 연락처: 1599-5455<br>• 핵심 담당자 (추정): 비즈니스 제휴팀, 데이터 사업팀<br>• 최신 동향: AI 기반 시세 예측, 데이터 상품 판매 등 플랫폼의 데이터 사업 강화." },
-            { id: 'p2-3', name: '현대/기아', point: '브랜드 신뢰도 강화', msg: "인증 중고차의 '신뢰', 위변조 불가능한 전자 보증서로 증명하십시오.", adoption: '도입 완료', db: "• 재무/실적: 현대 3,677대, 기아 7,508대 판매 ('24년)<br>• 대표 연락처: 현대 1522-0880, 기아 080-200-2000<br>• 핵심 담당자 (추정): 국내인증중고차사업팀<br>• 최신 동향: 인증 중고차 매물 확대 및 브랜드 신뢰도 제고 활동에 집중." },
-            { id: 'p2-4', name: '롯데렌터카', point: '렌터카 및 경매 연계', msg: "장기렌터카 계약부터 중고차 경매까지, 그룹 내 모든 자동차 계약 프로세스를 통합 관리하세요.", adoption: '도입 완료', db: "• 재무/실적: 어피니티로부터 1조 5,729억 원 투자 유치 ('25년)<br>• 대표 연락처: 롯데렌탈 대표번호 통해 연결<br>• 핵심 담당자 (추정): 디지털혁신팀, 중고차사업팀<br>• 최신 동향: 렌탈 사업과 중고차 판매(경매) 사업 간의 시너지 창출." },
-            { id: 'p2-5', name: 'SK렌터카', point: '인증 중고차 및 렌탈', msg: "'SK렌카 인증 중고차'의 계약 과정, 전자화로 고객 만족도를 한 단계 높일 수 있습니다.", adoption: '도입 완료', db: "• 재무/실적: 어피니티로부터 8,200억 원 투자 유치 ('25년)<br>• 대표 연락처: SK렌터카 대표번호 통해 연결<br>• 핵심 담당자 (추정): 인증중고차사업팀, 디지털전략팀<br>• 최신 동향: 온라인 채널을 통한 다이렉트 렌탈 및 중고차 판매 강화." },
-            { id: 'p2-6', name: '도이치오토월드', point: '매매단지 운영 디지털화', msg: "단지 내 수많은 상사의 계약을 디지털로 통합 관리하여 신뢰도를 높이세요.", adoption: '도입 필요', db: "• 재무/실적: 연간 매도 126,249대 ('24년)<br>• 대표 연락처: 1522-2269<br>• 핵심 담당자 (추정): 단지 운영사무실, 상사 협의회<br>• 최신 동향: 국내 최대 규모의 복합 매매단지로 운영 안정화에 집중." },
-            { id: 'p2-8', name: '오토허브', point: '고객 경험 선진화', msg: "방문 고객이 종이 서류 없이 스마트폰으로 계약하게 하여 만족도를 높이세요.", adoption: '도입 필요', db: "• 재무/실적: 연간 매도 39,559대 ('24년)<br>• 대표 연락처: 031-5182-5000<br>• 핵심 담당자 (추정): 단지 운영팀<br>• 최신 동향: 가족 단위 방문객을 위한 편의시설 확충 등 복합 문화 공간 지향." },
-            { id: 'p2-9', name: '국민차매매단지', point: '거래 프로세스 현대화', msg: "전통적인 매매단지의 거래 방식을 디지털로 전환하여 경쟁력을 확보하세요.", adoption: '도입 필요', db: "• 재무/실적: 연간 매도 21,074대 ('24년)<br>• 대표 연락처: 1600-7541<br>• 핵심 담당자 (추정): 단지 조합 또는 운영위원회<br>• 최신 동향: 주변 신규 단지와의 경쟁 속에서 서비스 개선 모색." },
-            { id: 'p2-10', name: '오토돔', point: '신뢰 기반 운영', msg: "전자계약 시스템 도입으로 투명한 거래 환경을 구축하여 고객 신뢰를 얻으세요.", adoption: '도입 필요', db: "• 재무/실적: 연간 매도 19,989대 ('24년)<br>• 대표 연락처: 031-8084-7000<br>• 핵심 담당자 (추정): 단지 운영팀<br>• 최신 동향: 지역 기반의 신뢰도 높은 매매단지로 포지셔닝." }
+            { id: 'p2-2', name: '엔카', point: '딜러 회원 및 데이터 관리', statusText: '', url: 'https://www.encar.com', adoption: '도입 완료', db: "• 재무/실적: 매출 869억 원 ('23년)<br>• 대표 연락처: 1599-5455<br>• 핵심 담당자 (추정): 비즈니스 제휴팀, 데이터 사업팀<br>• 최신 동향: AI 기반 시세 예측, 데이터 상품 판매 등 플랫폼의 데이터 사업 강화." },
+            { id: 'p2-3a', name: '현대/제네시스 인증중고차', point: '브랜드 신뢰도 강화', statusText: '', url: 'https://certified.hyundai.com', adoption: '도입 완료', db: "• 재무/실적: 연간 판매 3,677대 ('24년)<br>• 대표 연락처: 1522-0880<br>• 핵심 담당자 (추정): 국내인증중고차사업팀<br>• 최신 동향: 인증 중고차 매물 확대 및 브랜드 신뢰도 제고 활동에 집중." },
+            { id: 'p2-3b', name: '기아 인증중고차', point: '브랜드 신뢰도 강화', statusText: '', url: 'https://cpo.kia.com/', adoption: '도입 완료', db: "• 재무/실적: 연간 판매 7,508대 ('24년)<br>• 대표 연락처: 080-200-2000<br>• 핵심 담당자 (추정): 국내인증중고차사업팀<br>• 최신 동향: 인증 중고차 매물 확대 및 브랜드 신뢰도 제고 활동에 집중." },
+            { id: 'p2-4', name: '롯데렌터카', point: '렌터카 및 경매 연계', statusText: '', url: 'https://www.lotterentacar.net', adoption: '도입 완료', db: "• 재무/실적: 어피니티로부터 1조 5,729억 원 투자 유치 ('25년)<br>• 대표 연락처: 롯데렌탈 대표번호 통해 연결<br>• 핵심 담당자 (추정): 디지털혁신팀, 중고차사업팀<br>• 최신 동향: 렌탈 사업과 중고차 판매(경매) 사업 간의 시너지 창출." },
+            { id: 'p2-5', name: 'SK렌터카', point: '인증 중고차 및 렌탈', statusText: '', url: 'https://www.skdirect.co.kr/', adoption: '도입 완료', db: "• 재무/실적: 어피니티로부터 8,200억 원 투자 유치 ('25년)<br>• 대표 연락처: SK렌터카 대표번호 통해 연결<br>• 핵심 담당자 (추정): 인증중고차사업팀, 디지털전략팀<br>• 최신 동향: 온라인 채널을 통한 다이렉트 렌탈 및 중고차 판매 강화." },
+            { id: 'p2-6', name: '도이치오토월드', point: '매매단지 운영 디지털화', statusText: '', url: 'https://charancha.com/', adoption: '도입 필요', db: "• 재무/실적: 연간 매도 126,249대 ('24년)<br>• 대표 연락처: 1522-2269<br>• 핵심 담당자 (추정): 단지 운영사무실, 상사 협의회<br>• 최신 동향: 국내 최대 규모의 복합 매매단지로 운영 안정화에 집중." },
+            { id: 'p2-8', name: '오토허브', point: '고객 경험 선진화', statusText: '', url: 'https://www.autohub.co.kr', adoption: '도입 필요', db: "• 재무/실적: 연간 매도 39,559대 ('24년)<br>• 대표 연락처: 031-5182-5000<br>• 핵심 담당자 (추정): 단지 운영팀<br>• 최신 동향: 가족 단위 방문객을 위한 편의시설 확충 등 복합 문화 공간 지향." },
+            { id: 'p2-10', name: '오토돔', point: '신뢰 기반 운영', statusText: '', url: 'https://autodome.kr', adoption: '도입 필요', db: "• 재무/실적: 연간 매도 19,989대 ('24년)<br>• 대표 연락처: 031-8084-7000<br>• 핵심 담당자 (추정): 단지 운영팀<br>• 최신 동향: 지역 기반의 신뢰도 높은 매매단지로 포지셔닝." }
         ]
     };
 
@@ -316,7 +317,19 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         options: {
             responsive: true, maintainAspectRatio: false,
-            plugins: { legend: { display: false }, tooltip: { callbacks: { label: (c) => `${c.dataset.label}: ${new Intl.NumberFormat('ko-KR').format(c.parsed.y)} 대` } } },
+            plugins: { 
+                legend: { display: false }, 
+                tooltip: { callbacks: { label: (c) => `${c.dataset.label}: ${new Intl.NumberFormat('ko-KR').format(c.parsed.y)} 대` } },
+                datalabels: {
+                    anchor: 'end',
+                    align: 'end',
+                    formatter: (value) => new Intl.NumberFormat('ko-KR').format(value),
+                    color: '#4b5563',
+                    font: {
+                        weight: 'bold'
+                    }
+                }
+            },
             scales: { y: { beginAtZero: true, ticks: { callback: (v) => new Intl.NumberFormat('ko-KR', { notation: 'compact' }).format(v) } } }
         }
     });
@@ -333,7 +346,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (!acc[statusKey]) {
                 acc[statusKey] = [];
             }
-            acc[statusKey].push(target.name);
+            acc[statusKey].push(target);
             return acc;
         }, {});
 
@@ -373,8 +386,15 @@ document.addEventListener('DOMContentLoaded', function () {
                                     const label = context[0].label;
                                     const companies = adoptionGroups[label] || [];
                                     const companyLines = [];
-                                    for (let i = 0; i < companies.length; i += 2) {
-                                        companyLines.push('  • ' + companies.slice(i, i + 2).join(', '));
+                                    for (let i = 0; i < companies.length; i++) {
+                                        const company = companies[i];
+                                        let prefix = '  • ';
+                                        if (company.statusText && company.statusText.includes('수주 완료')) {
+                                            prefix = '  🎉 ';
+                                        } else if (company.statusText && (company.statusText.includes('영업 진행 중') || company.statusText.includes('유지보수 진행 중'))) {
+                                            prefix = '  🔥 ';
+                                        }
+                                        companyLines.push(prefix + company.name);
                                     }
                                     return companyLines;
                                 }
@@ -406,10 +426,23 @@ document.addEventListener('DOMContentLoaded', function () {
     function createTargetCard(target) {
         const card = document.createElement('div');
         card.className = 'target-card bg-white rounded-lg shadow-md p-6 cursor-pointer flex flex-col justify-between';
+        
+        let statusHtml = '';
+        if (target.statusText) {
+            let colorClass = 'text-gray-600';
+            if (target.statusText.includes('수주 완료')) {
+                colorClass = 'text-green-600';
+            } else if (target.statusText.includes('영업 진행 중')) {
+                colorClass = 'text-blue-600';
+            }
+            statusHtml = `<p class="text-xs font-bold ${colorClass} mt-2">${target.statusText}</p>`;
+        }
+        
         card.innerHTML = `
             <div>
                 <h4 class="font-bold text-lg mb-2">${target.name}</h4>
                 <p class="text-sm text-gray-500">${target.point}</p>
+                ${statusHtml}
             </div>
             <p class="text-blue-600 text-sm font-semibold mt-4 text-right">자세히 보기 &rarr;</p>
         `;
@@ -432,16 +465,20 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function openModal(target) {
+        let urlHtml = '';
+        if (target.url && target.url !== '#') {
+            urlHtml = `<div class="mb-6">
+                <p class="font-semibold text-gray-500 text-sm uppercase tracking-wider">홈페이지</p>
+                <a href="${target.url}" target="_blank" class="text-blue-600 hover:underline">${target.url}</a>
+            </div>`;
+        }
         modalBody.innerHTML = `
             <h3 class="text-2xl font-bold mb-4">${target.name}</h3>
             <div class="mb-6">
                 <p class="font-semibold text-gray-500 text-sm uppercase tracking-wider">핵심 포인트</p>
                 <p class="text-lg">${target.point}</p>
             </div>
-            <div class="mb-6">
-                <p class="font-semibold text-gray-500 text-sm uppercase tracking-wider">제안 메시지</p>
-                <p class="text-lg italic text-blue-700 bg-blue-50 p-4 rounded-md">"${target.msg}"</p>
-            </div>
+            ${urlHtml}
             <div>
                 <p class="font-semibold text-gray-500 text-sm uppercase tracking-wider">영업 정보 (DB)</p>
                 <div class="text-gray-700 bg-gray-50 p-4 rounded-md mt-2">${target.db}</div>
